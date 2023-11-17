@@ -10,7 +10,7 @@ This data pack library provides two configurable NBTs in the `str-splitter:main`
 NBT Path            | Default Value | Description
 --------------------|---------------|------------
 `root.delimiter`    | `":"`         | Determines which character the input string should be split by. **Currently only supports single characters**.
-`root.limit`        | `1`           | Determines how many times the input string should be split.
+`root.limit`        | `1`           | Determines how many times the input string should be split. If set to `-1` or lower, there will be no limit on how many times the input string should be split.
 <br>
 
 **e.g**:
