@@ -43,7 +43,7 @@ function str-splitter:start
 #   Example: display the namespace and path from "minecraft:dirt"
 tellraw @a ["Namespace: \"", {"storage": "str-splitter:io", "nbt": "root.output[0]"}, "\""]
 
-tellraw @a ["Path: ", {"storage": "str-splitter:io", "nbt": "root.output[1]"}, "\""]
+tellraw @a ["Path: \"", {"storage": "str-splitter:io", "nbt": "root.output[1]"}, "\""]
 
 
 #   The output should be:
