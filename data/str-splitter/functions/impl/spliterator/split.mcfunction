@@ -20,8 +20,8 @@ execute store result score #input.length str-splitter run data get storage str-s
 
 
 #   If the splitting limit hasn't been reached, continue spliterating the new input string
-execute if score #splits str-splitter < #input.split_limit str-splitter run function str-splitter:impl/spliterator/refresh
+execute if predicate str-splitter:should_continue_splitting run function str-splitter:impl/spliterator/refresh
 
 
 #   Otherwise, stop
-execute if score #splits str-splitter >= #input.split_limit str-splitter run function str-splitter:impl/spliterator/end
+execute if predicate str-splitter:should_stop_splitting run function str-splitter:impl/spliterator/end

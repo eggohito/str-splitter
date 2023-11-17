@@ -1,0 +1,40 @@
+{
+    "condition": "minecraft:any_of",
+    "terms": [
+        {
+            "condition": "minecraft:value_check",
+            "value": {
+                "type": "minecraft:score",
+                "target": {
+                    "type": "minecraft:fixed",
+                    "name": "#input.split_limit"
+                },
+                "score": "str-splitter"
+            },
+            "range": {
+                "max": -1
+            }
+        },
+        {
+            "condition": "minecraft:value_check",
+            "value": {
+                "type": "minecraft:score",
+                "target": {
+                    "type": "minecraft:fixed",
+                    "name": "#splits"
+                },
+                "score": "str-splitter"
+            },
+            "range": {
+                "max": {
+                    "type": "minecraft:score",
+                    "target": {
+                        "type": "minecraft:fixed",
+                        "name": "#input.split_limit"
+                    },
+                    "score": "str-splitter"
+                }
+            }
+        }
+    ]
+}

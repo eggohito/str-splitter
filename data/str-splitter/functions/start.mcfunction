@@ -34,8 +34,8 @@ data modify storage str-splitter:temp root.input set from storage str-splitter:i
 
 
 #   If the input string is not empty and if the specified split limit is greater than 0, iterate through each of its characters
-execute if score #input.split_limit str-splitter matches 1.. if score #input.length str-splitter matches 1.. run function str-splitter:impl/spliterator/loop with storage str-splitter:temp root
+execute if predicate str-splitter:can_split if score #input.length str-splitter matches 1.. run function str-splitter:impl/spliterator/loop with storage str-splitter:temp root
 
 
-#   If the specified split limit is less than 1, just copy the input string to the output path
-execute if score #input.split_limit str-splitter matches ..0 run data modify storage str-splitter:io root.output append from storage str-splitter:temp root.input
+#   If the specified split limit is 0, just copy the input string to the output path
+execute if score #input.split_limit str-splitter matches 0 run data modify storage str-splitter:io root.output append from storage str-splitter:temp root.input
