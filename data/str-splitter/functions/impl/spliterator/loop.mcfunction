@@ -3,7 +3,7 @@
 #   >   Iterate through each of the specified string in the `root.input` NBT path of the `str-splitter:io` storage.
 #
 #@within
-#   function str-splitter:start
+#   function str-splitter:impl/spliterator/start
 #   function str-splitter:impl/spliterator/loop
 
 
@@ -12,23 +12,17 @@ $data modify storage str-splitter:temp root.char set string storage str-splitter
 
 
 #   Check if the current character is the specified delimiter
-data modify storage str-splitter:temp root.delimiter set from storage str-splitter:main root.delimiter
+data modify storage str-splitter:temp root.matcher set from storage str-splitter:temp root.delimiter
 
-execute store success score #shouldnt_split str-splitter run data modify storage str-splitter:temp root.delimiter set from storage str-splitter:temp root.char
+execute store success score #delimiter.not_found str-splitter run data modify storage str-splitter:temp root.matcher set from storage str-splitter:temp root.char
 
 
 #   If the current character is the specified delimiter, split the string
-execute if score #shouldnt_split str-splitter matches 0 run function str-splitter:impl/spliterator/split with storage str-splitter:temp root
+execute if score #delimiter.not_found str-splitter matches 0 run function str-splitter:impl/spliterator/compute/result with storage str-splitter:temp root
 
 
 #   Increment the start and end indexes
-scoreboard players add #index.start str-splitter 1
-
-scoreboard players add #index.end str-splitter 1
-
-execute store result storage str-splitter:temp root.start_index int 1 run scoreboard players get #index.start str-splitter
-
-execute store result storage str-splitter:temp root.end_index int 1 run scoreboard players get #index.end str-splitter
+function str-splitter:impl/spliterator/compute/index
 
 
 #   If the start index is equal or greater than the specified string's length, append the remaining string to the output path

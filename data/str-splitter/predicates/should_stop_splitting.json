@@ -21,7 +21,7 @@
                 "type": "minecraft:score",
                 "target": {
                     "type": "minecraft:fixed",
-                    "name": "#splits"
+                    "name": "#input.splits"
                 },
                 "score": "str-splitter"
             },

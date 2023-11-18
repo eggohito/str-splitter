@@ -9,7 +9,7 @@ This data pack library provides two configurable NBTs in the `str-splitter:main`
 
 NBT Path            | Default Value | Description
 --------------------|---------------|------------
-`root.delimiter`    | `":"`         | Determines which character the input string should be split by. **Currently only supports single characters**.
+`root.delimiter`    | `":"`         | Determines which string the input string should be split by.
 `root.limit`        | `1`           | Determines how many times the input string should be split. If set to `-1` or lower, there will be no limit on how many times the input string should be split.
 <br>
 
@@ -32,9 +32,9 @@ data modify storage str-splitter:io root.input set value "minecraft:dirt"
 ```
 <br>
 
-2. Call the `str-splitter:start` function to start the process of splitting the specified string in the `root.input` NBT of the `str-splitter:io` command storage:
+2. Call the `#str-splitter:start` function tag to start the process of splitting the specified string in the `root.input` NBT of the `str-splitter:io` command storage:
 ```mcfunction
-function str-splitter:start
+function #str-splitter:start
 ```
 <br>
 
