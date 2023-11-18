@@ -8,17 +8,17 @@
 
 
 #   Get the character between the start and end indexes
-$data modify storage str-splitter:temp root.char set string storage str-splitter:temp root.input $(start_index) $(end_index)
+$data modify storage str-splitter:temp root.current_string set string storage str-splitter:temp root.input $(start_index) $(end_index)
 
 
 #   Check if the current character is the specified delimiter
 data modify storage str-splitter:temp root.matcher set from storage str-splitter:temp root.delimiter
 
-execute store success score #delimiter.not_found str-splitter run data modify storage str-splitter:temp root.matcher set from storage str-splitter:temp root.char
+execute store success score #delimiter.not_found str-splitter run data modify storage str-splitter:temp root.matcher set from storage str-splitter:temp root.current_string
 
 
 #   If the current character is the specified delimiter, split the string
-execute if score #delimiter.not_found str-splitter matches 0 run function str-splitter:impl/spliterator/compute/result with storage str-splitter:temp root
+execute if predicate str-splitter:should_split run function str-splitter:impl/spliterator/compute/result with storage str-splitter:temp root
 
 
 #   Increment the start and end indexes

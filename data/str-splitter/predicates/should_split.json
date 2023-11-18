@@ -1,0 +1,29 @@
+{
+    "condition": "minecraft:any_of",
+    "terms": [
+        {
+            "condition": "minecraft:value_check",
+            "value": {
+                "type": "minecraft:score",
+                "target": {
+                    "type": "minecraft:fixed",
+                    "name": "#delimiter.not_found"
+                },
+                "score": "str-splitter"
+            },
+            "range": 0
+        },
+        {
+            "condition": "minecraft:value_check",
+            "value": {
+                "type": "minecraft:score",
+                "target": {
+                    "type": "minecraft:fixed",
+                    "name": "#delimiter.actual_length"
+                },
+                "score": "str-splitter"
+            },
+            "range": 0
+        }
+    ]
+}

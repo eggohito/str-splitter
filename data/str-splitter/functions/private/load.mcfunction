@@ -27,3 +27,7 @@ execute unless score #loaded str-splitter = #loaded str-splitter run data modify
 
 
 scoreboard players set #loaded str-splitter 1
+
+
+#   Setup constants
+scoreboard players set #1 str-splitter 1

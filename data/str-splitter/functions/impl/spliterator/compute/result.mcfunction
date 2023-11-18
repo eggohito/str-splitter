@@ -1,13 +1,17 @@
 #> str-splitter:impl/spliterator/compute/result
 #
-#   >   Split the string using the start and end indexes of the found delimiter character
+#   >   Split the string using the start and end indexes of the found delimiter string
 #
 #@within function str-splitter:impl/spliterator/loop
 
 
-#   Split the string and use the last string as the new input string
-$data modify storage str-splitter:io root.output append string storage str-splitter:temp root.input 0 $(start_index)
+#   Split the string based from the start and end indexes of the delimiter string
+$execute if score #delimiter.actual_length str-splitter matches 1.. run data modify storage str-splitter:io root.output append string storage str-splitter:temp root.input 0 $(start_index)
 
+execute if score #delimiter.actual_length str-splitter matches ..0 run data modify storage str-splitter:io root.output append string storage str-splitter:temp root.input 0 1
+
+
+#   Use the remaining string as the new input string
 $data modify storage str-splitter:temp root.input set string storage str-splitter:temp root.input $(end_index)
 
 
