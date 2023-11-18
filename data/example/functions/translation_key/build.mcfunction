@@ -3,7 +3,7 @@
 
 
 #   Split the string specified in the `root.input` NBT path of the `str-splitter:io` storage
-function str-splitter:start
+function #str-splitter:start
 
 
 #   Store the split output into the `namespace` and `path` NBT paths of the `root` NBT compound of the `example:translation_key` storage
